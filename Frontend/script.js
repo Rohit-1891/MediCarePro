@@ -67,6 +67,7 @@ $(document).ready(function() {
     const spinner = document.getElementById("loadingSpinner");
 
     form.addEventListener("submit", function(e) {
+
         e.preventDefault();
 
         const age = document.getElementById("age").value;
@@ -86,24 +87,32 @@ $(document).ready(function() {
         result.style.display = "none";
         spinner.style.display = "block";
 
-        fetch("http://127.0.0.1:5000/predict", {
+        // ===============================
+        // CALL RENDER BACKEND API
+        // ===============================
+
+        fetch("https://medicurepro-backend.onrender.com/predict", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 age: age,
                 symptoms: selectedSymptoms
             })
         })
+
         .then(response => response.json())
+
         .then(data => {
 
             spinner.style.display = "none";
             result.style.display = "block";
             result.innerHTML = "";
 
-            // ============================================
-            // SHOW EMERGENCY BANNER ONLY IF TOP IS SERIOUS
-            // ============================================
+            // ==========================================
+            // EMERGENCY BANNER IF TOP RESULT IS SERIOUS
+            // ==========================================
 
             if (data.length > 0 && data[0].serious === true) {
                 result.innerHTML += `
@@ -113,9 +122,9 @@ $(document).ready(function() {
                 `;
             }
 
-            // ============================================
-            // DISPLAY DISEASE CARDS
-            // ============================================
+            // ==========================================
+            // SHOW DISEASE RESULT CARDS
+            // ==========================================
 
             data.forEach((item, index) => {
 
@@ -123,24 +132,27 @@ $(document).ready(function() {
 
                 let confidenceClass = "";
 
-if (item.confidence >= 70) {
-    confidenceClass = "confidence-high";
-} else if (item.confidence >= 40) {
-    confidenceClass = "confidence-medium";
-} else {
-    confidenceClass = "confidence-low";
-}
+                if (item.confidence >= 70) {
+                    confidenceClass = "confidence-high";
+                }
+                else if (item.confidence >= 40) {
+                    confidenceClass = "confidence-medium";
+                }
+                else {
+                    confidenceClass = "confidence-low";
+                }
 
                 result.innerHTML += `
+
                     <div class="disease-card 
                         ${index === 0 ? 'top-match' : ''} 
                         ${isSerious ? 'serious-case' : ''}">
-                        
-                      <div class="disease-title">
-    ${isSerious ? "🏥 " : ""}
-    ${item.disease} 
-    ${index === 0 ? "(Top Match)" : ""}
-</div>
+
+                        <div class="disease-title">
+                            ${isSerious ? "🏥 " : ""}
+                            ${item.disease}
+                            ${index === 0 ? "(Top Match)" : ""}
+                        </div>
 
                         ${
                             isSerious
@@ -151,46 +163,55 @@ if (item.confidence >= 70) {
                         }
 
                         <div><strong>Age:</strong> ${age}</div>
-                        <div><strong>Symptoms:</strong> 
+
+                        <div><strong>Symptoms:</strong>
                             ${selectedSymptoms.join(", ").replace(/_/g, " ")}
                         </div>
-                        <div><strong>Allergies:</strong> 
-                            ${selectedAllergies 
-                                ? selectedAllergies.join(", ").replace(/_/g, " ") 
-                                : "None"}
+
+                        <div><strong>Allergies:</strong>
+                            ${
+                                selectedAllergies
+                                ? selectedAllergies.join(", ").replace(/_/g, " ")
+                                : "None"
+                            }
                         </div>
 
-                        <div><strong>Recommended Medicine:</strong> 
-    ${item.medicines}
-</div>
+                        <div><strong>Recommended Medicine:</strong>
+                            ${item.medicines}
+                        </div>
 
                         <div>Confidence: ${item.confidence}%</div>
+
                         <div class="probability-bar">
                             <div class="probability-fill ${confidenceClass}" 
-     style="width:${item.confidence}%">
-</div>
+                                style="width:${item.confidence}%">
+                            </div>
                         </div>
+
                     </div>
                 `;
             });
 
-          result.innerHTML += `
-    <div class="disclaimer">
-        <strong>Medical Disclaimer:</strong>
-        This AI-based prediction system is for informational purposes only.
-        It does not replace professional medical advice, diagnosis, or treatment.
-        Always consult a qualified healthcare provider for proper medical evaluation.
-    </div>
-`;  
+            // ==========================================
+            // MEDICAL DISCLAIMER
+            // ==========================================
 
+            result.innerHTML += `
+                <div class="disclaimer">
+                    <strong>Medical Disclaimer:</strong>
+                    This AI-based prediction system is for informational purposes only.
+                    It does not replace professional medical advice, diagnosis, or treatment.
+                    Always consult a qualified healthcare provider for proper medical evaluation.
+                </div>
+            `;
         })
-
 
         .catch(error => {
             spinner.style.display = "none";
             alert("Error connecting to backend.");
             console.error(error);
         });
+
     });
 
 });
