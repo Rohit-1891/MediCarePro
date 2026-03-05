@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #008080, #004d4d);
+    color: white;
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-left {
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
+}
+
+/* GLASS FORM */
+#symptomForm {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(230, 217, 217, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(27, 27, 27, 0.15);
+    color: rgb(245, 235, 235);
+}
+
+
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: none;
+    background: #00ffff;
+    color: #004d4d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: white;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* SPINNER */
+.spinner-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(255,255,255,0.3);
+    border-top: 6px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* RESULT CARDS */
+#result {
+    margin-top: 20px;
+    display: none;
+}
+
+.disease-card {
+    background: white;
+    color: #004d4d;
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.top-match {
+    border: 2px solid #00b4d8;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+.disease-title {
+    font-weight: 600;
+}
+
+.probability-bar {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.probability-fill {
+    height: 100%;
+    background: linear-gradient(to right, #00cccc, #008080);
+}
+
+/* DISCLAIMER */
+.disclaimer {
+    margin-top: 25px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ffb703;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #fff;
+    backdrop-filter: blur(8px);
+}
+
+.disclaimer strong {
+    color: #ffdd57;
+}
+
+/* IMAGE */
+.hero-right {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+}
+
+
+/* ================= SELECT2 GLASS FIX ================= */
+
+/* Main Select2 box */
+.select2-container--default .select2-selection--multiple {
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    min-height: 45px;
+    padding: 5px;
+}
+
+/* Selected tags */
+.select2-selection__choice {
+    background-color: #00cccc !important;
+    color: #004d4d !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 4px 10px !important;
+    font-size: 0.85rem;
+}
+
+/* Search input text */
+.select2-search__field {
+    color: white !important;
+}
+
+/* Dropdown menu */
+.select2-container--default .select2-dropdown {
+    background: #006666 !important;
+    color: white !important;
+    border-radius: 12px !important;
+    border: none !important;
+}
+
+/* Dropdown options */
+.select2-results__option {
+    color: white !important;
+    padding: 10px;
+}
+
+/* Hover effect */
+.select2-results__option--highlighted {
+    background-color: #00cccc !important;
+    color: #004d4d !important;
+}
+
+/* Placeholder text */
+.select2-selection__placeholder {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+
+body {
+    background: linear-gradient(135deg, #008080, #006666);
+    color: white;
+}
+
+/* Glass card */
+#symptomForm {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Remove Select2 clear (X) button completely */
+.select2-selection__clear {
+    display: none !important;
+}
+
+
+.serious-case {
+    border: 2px solid #d90429;
+    background: #fff5f5;
+    box-shadow: 0 6px 18px rgba(217, 4, 41, 0.3);
+}
+
+.serious-warning {
+    background: rgba(217, 4, 41, 0.08);
+    color: #b00020;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+.emergency-banner {
+    background: linear-gradient(135deg, #d90429, #9d0208);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 18px rgba(217, 4, 41, 0.5);
+    animation: pulseAlert 1.5s infinite;
+}
+
+@keyframes pulseAlert {
+    0% { box-shadow: 0 0 0 rgba(217, 4, 41, 0.6); }
+    50% { box-shadow: 0 0 18px rgba(217, 4, 41, 0.9); }
+    100% { box-shadow: 0 0 0 rgba(217, 4, 41, 0.6); }
+}
+
+/* ================= CONFIDENCE COLORS ================= */
+
+.confidence-high {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+.confidence-medium {
+    background: linear-gradient(to right, #f1c40f, #f39c12);
+}
+
+.confidence-low {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+}
+
+/* New css */
+
+/* ================= GLOBAL STYLES ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #008080, #004d4d);
+    color: white;
+    line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+.hero-left {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-left h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-left p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #00ffff;
+    color: #004d4d;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-hero:hover {
+    background: #ffffff;
+    color: #004d4d;
+    transform: translateY(-2px);
+}
+
+.hero-right {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* ================= GET STARTED SECTION ================= */
+.get-started {
+    padding: 4rem 2rem;
+    background: #006666;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.get-started h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.get-started p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: #e0f7fa;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(27, 27, 27, 0.15);
+    color: white;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: none;
+    background: #00ffff;
+    color: #004d4d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: white;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* SPINNER */
+.spinner-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(255,255,255,0.3);
+    border-top: 6px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* RESULT CARDS */
+#result {
+    margin-top: 20px;
+    display: none;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    background: rgba(0,0,0,0.2);
+    color: #e0f7fa;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        border-radius: 0;
+        padding: 3rem 1rem;
+    }
+
+    .hero-left h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-left h3 {
+        font-size: 1.2rem;
+    }
+
+    .hero-right img {
+        max-width: 300px;
+    }
+
+    .btn-hero {
+        margin-bottom: 2rem;
+    }
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    object-fit: cover; /* Ensures image fills the circle nicely */
+}
+
+
+
+/* ================= HERO SECTION ================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center content */
+    min-height: 90vh; /* Full screen height feel */
+    padding: 4rem 8%;
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+/* LEFT SIDE */
+.hero-left {
+    flex: 1;
+    max-width: 550px;
+}
+
+.hero-left h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+
+.hero-left h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-left p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* RIGHT SIDE */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CIRCULAR DOCTOR IMAGE */
+.hero-right img {
+    width: 380px;
+    height: 380px;   /* Equal width & height for perfect circle */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    border: 6px solid rgba(255,255,255,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 3rem 1.5rem;
+        min-height: auto;
+    }
+
+    .hero-right img {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-left h1 {
+        font-size: 2.3rem;
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }  /* float up */
+    100% { transform: translateY(0px); }
+}
+
+.hero-right img {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    border: 6px solid rgba(255,255,255,0.3);
+    animation: float 4s ease-in-out infinite; /* Floating animation */
+}

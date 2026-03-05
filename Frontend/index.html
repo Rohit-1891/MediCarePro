@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediCarePro - AI Medical Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-based disease prediction system using symptoms and allergies.">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2><div class="logo">MediCarePro</div></h2>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-left">
+        <h1>MediCarePro</h1>
+        <h3>Your AI Assistant for Health Predictions</h3>
+        <p>Quickly analyze your symptoms and receive suggestions for possible diseases and recommended medicines. Empower yourself with AI-assisted medical insights.</p>
+        <a href="#get-started" class="btn-hero">Get Started</a>
+    </div>
+    <div class="hero-right">
+        <img src="Image/hero-removebg-preview.png" alt="Doctor Illustration">
+    </div>
+</section>
+
+<!-- GET STARTED SECTION -->
+<section class="get-started" id="get-started">
+    <div class="form-container">
+        <h2>Get Started</h2>
+        <p>Enter your age and select your symptoms and allergies to receive AI-based predictions</p>
+
+        <form id="symptomForm">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age"
+                       placeholder="Enter your age"
+                       min="0" max="120" required>
+            </div>
+
+            <div class="form-group">
+                <label for="allergy">Select Allergies (if any)</label>
+                <select id="allergy" name="allergy" multiple style="width:100%;"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="symptoms">Select Symptoms</label>
+                <select id="symptoms" name="symptoms" multiple style="width:100%;"></select>
+            </div>
+
+            <button type="submit">Predict Disease</button>
+        </form>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="spinner-container">
+            <div class="spinner"></div>
+            <p>Analyzing symptoms...</p>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result"></div>
+
+        <p class="disclaimer">
+            This system is for educational purposes only and not a substitute 
+            for professional medical advice.
+        </p>
+    </div>
+</section>
+
+<footer class="footer">
+    Developed for College Project 2026
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
