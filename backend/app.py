@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import joblib
+import os  # <-- add this for PORT
 
 app = Flask(__name__)
 CORS(app)
@@ -94,6 +95,8 @@ def predict():
     return jsonify(results)
 
 # ===============================
-
+# LOCAL TESTING ONLY
+# ===============================
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
