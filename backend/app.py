@@ -54,6 +54,14 @@ except Exception as e:
 # ===============================
 # Prediction API
 # ===============================
+
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "MediCarePro Backend is Running",
+        "status": "success"
+    })
+
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.json
